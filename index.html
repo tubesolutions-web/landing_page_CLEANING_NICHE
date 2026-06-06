@@ -1006,33 +1006,33 @@ footer p { max-width: 700px; margin: 6px auto; }
   }, 4500 + Math.random() * 2000);
 })();
 
-/* ---- MID-PAGE COUNTDOWN (shares the SAME deadline as the top bar) ---- */
-(function countdown() {
-  const h = document.getElementById('cd-hours'), m = document.getElementById('cd-minutes'), s = document.getElementById('cd-seconds');
-  let deadline = sessionStorage.getItem('lp-top-deadline');
-  if (!deadline) { deadline = Date.now() + (5 * 3600 + 59 * 60 + 23) * 1000; sessionStorage.setItem('lp-top-deadline', deadline); }
-  deadline = parseInt(deadline);
-  function tick() {
-    const diff = Math.max(0, deadline - Date.now());
-    h.textContent = String(Math.floor(diff / 3600000)).padStart(2, '0');
-    m.textContent = String(Math.floor((diff % 3600000) / 60000)).padStart(2, '0');
-    s.textContent = String(Math.floor((diff % 60000) / 1000)).padStart(2, '0');
-  }
-  tick(); setInterval(tick, 1000);
-})();
+/* ---- PROMO COUNTDOWN — top bar + mid-page, synced, and never hits 0 ---- */
+(function promoCountdown() {
+  const DURATION_MS = (5 * 3600 + 59 * 60 + 23) * 1000;
+  const top = { h: document.getElementById('top-cd-h'), m: document.getElementById('top-cd-m'), s: document.getElementById('top-cd-s') };
+  const mid = { h: document.getElementById('cd-hours'), m: document.getElementById('cd-minutes'), s: document.getElementById('cd-seconds') };
 
-/* ---- TOP BAR COUNTDOWN (~6h, per-session) ---- */
-(function topCountdown() {
-  const h = document.getElementById('top-cd-h'), m = document.getElementById('top-cd-m'), s = document.getElementById('top-cd-s');
-  if (!h) return;
-  let dl = sessionStorage.getItem('lp-top-deadline');
-  if (!dl) { dl = Date.now() + (5 * 3600 + 59 * 60 + 23) * 1000; sessionStorage.setItem('lp-top-deadline', dl); }
-  dl = parseInt(dl);
+  function remaining() {
+    let dl = parseInt(sessionStorage.getItem('lp-top-deadline'));
+    // (re)start the promo whenever it's missing or about to hit zero, so it never sits at 0
+    if (!dl || dl - Date.now() <= 1000) {
+      dl = Date.now() + DURATION_MS;
+      sessionStorage.setItem('lp-top-deadline', dl);
+    }
+    return dl - Date.now();
+  }
+
+  function paint(t, diff) {
+    if (!t.h) return;
+    t.h.textContent = String(Math.floor(diff / 3600000)).padStart(2, '0');
+    t.m.textContent = String(Math.floor((diff % 3600000) / 60000)).padStart(2, '0');
+    t.s.textContent = String(Math.floor((diff % 60000) / 1000)).padStart(2, '0');
+  }
+
   function tick() {
-    const diff = Math.max(0, dl - Date.now());
-    h.textContent = String(Math.floor(diff / 3600000)).padStart(2, '0');
-    m.textContent = String(Math.floor((diff % 3600000) / 60000)).padStart(2, '0');
-    s.textContent = String(Math.floor((diff % 60000) / 1000)).padStart(2, '0');
+    const diff = remaining();
+    paint(top, diff);
+    paint(mid, diff);
   }
   tick(); setInterval(tick, 1000);
 })();
