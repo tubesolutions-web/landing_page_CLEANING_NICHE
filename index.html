@@ -985,11 +985,11 @@ footer p { max-width: 700px; margin: 6px auto; }
 
 <!-- ===== TOAST ===== -->
 <div class="toast" id="purchase-toast">
-  <div class="toast-icon" id="toast-initial">R</div>
+  <div class="toast-icon" id="toast-initial">G</div>
   <div class="toast-body">
-    <div class="toast-name" id="toast-name">Robert from Knoxville, TN</div>
+    <div class="toast-name" id="toast-name">Gary from Springfield, MO</div>
     <div class="toast-action" id="toast-action">just got <strong>The Complete Vault</strong></div>
-    <div class="toast-time" id="toast-time">2 minutes ago</div>
+    <div class="toast-time" id="toast-time">3 minutes ago</div>
   </div>
 </div>
 
@@ -1062,14 +1062,20 @@ function closeModal() {
 
 /* ---- PURCHASE TOASTS (demo data — replace with real webhook data before relying on it) ---- */
 const TOAST_DATA = [
-  { name: 'Robert', city: 'Knoxville, TN', product: 'The Complete Vault', mins: 2 },
-  { name: 'Linda', city: 'Phoenix, AZ', product: 'The Vault', mins: 4 },
-  { name: 'Thomas', city: 'Cleveland, OH', product: 'The Complete Vault', mins: 7 },
-  { name: 'Margaret', city: 'Burlington, VT', product: 'The Blueprint', mins: 9 },
-  { name: 'James', city: 'Spokane, WA', product: 'The Complete Vault', mins: 12 },
-  { name: 'Patricia', city: 'Austin, TX', product: 'The Vault', mins: 14 },
-  { name: 'Susan', city: 'Cambridge, MA', product: 'The Blueprint', mins: 22 },
-  { name: 'Walter', city: 'Tallahassee, FL', product: 'The Complete Vault', mins: 26 },
+  { name: 'Gary', city: 'Springfield, MO', product: 'The Complete Vault', mins: 3 },
+  { name: 'Cheryl', city: 'Fort Wayne, IN', product: 'The Vault', mins: 6 },
+  { name: 'Dale', city: 'Chattanooga, TN', product: 'The Complete Vault', mins: 8 },
+  { name: 'Brenda', city: 'Tulsa, OK', product: 'The Blueprint', mins: 11 },
+  { name: 'Wayne', city: 'Bakersfield, CA', product: 'The Complete Vault', mins: 13 },
+  { name: 'Sharon', city: 'Wichita, KS', product: 'The Vault', mins: 17 },
+  { name: 'Roger', city: 'Lubbock, TX', product: 'The Complete Vault', mins: 21 },
+  { name: 'Diane', city: 'Sioux Falls, SD', product: 'The Blueprint', mins: 24 },
+  { name: 'Larry', city: 'Greenville, SC', product: 'The Complete Vault', mins: 29 },
+  { name: 'Janet', city: 'Bend, OR', product: 'The Vault', mins: 33 },
+  { name: 'Frank', city: 'Akron, OH', product: 'The Complete Vault', mins: 38 },
+  { name: 'Sandra', city: 'Macon, GA', product: 'The Blueprint', mins: 44 },
+  { name: 'Earl', city: 'Boise, ID', product: 'The Complete Vault', mins: 49 },
+  { name: 'Donna', city: 'Dayton, OH', product: 'The Vault', mins: 55 },
 ];
 (function purchaseToasts() {
   const toast = document.getElementById('purchase-toast');
