@@ -4,6 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<!-- Google Analytics 4 (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-V1FE4DV5WL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-V1FE4DV5WL');
+</script>
+
 <!-- ===== TODO: REPLACE META ===== -->
 <title>Your Product — The Headline They Don't Want You To Read</title>
 <meta name="description" content="A 3-volume archive of practical methods, documents, and formulas — collected, documented, and now available in one place.">
@@ -1100,6 +1109,22 @@ const TOAST_DATA = [
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
   }, { threshold: 0.15 });
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+})();
+
+/* ---- GA4 CTA CLICK TRACKING ---- */
+(function ctaTracking() {
+  if (typeof gtag !== 'function') return;
+  document.querySelectorAll('.cta-btn, .nav-cta, .mobile-sticky-cta, .modal-cta').forEach(el => {
+    el.addEventListener('click', () => {
+      const label = (el.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 60);
+      let placement = 'single_card';
+      if (el.classList.contains('nav-cta')) placement = 'nav';
+      else if (el.classList.contains('mobile-sticky-cta')) placement = 'mobile_sticky';
+      else if (el.classList.contains('modal-cta')) placement = 'modal';
+      else if (el.classList.contains('gold')) placement = 'bundle_card';
+      gtag('event', 'cta_click', { cta_label: label, cta_placement: placement });
+    });
+  });
 })();
 </script>
 
