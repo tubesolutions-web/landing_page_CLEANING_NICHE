@@ -727,8 +727,7 @@ footer p { max-width: 700px; margin: 6px auto; }
     YOUR BRAND
     <span>Edition 2026</span>
   </div>
-  <!-- TODO: replace href with your checkout link -->
-  <a href="#offer" class="nav-cta">
+  <a href="#offer" class="nav-cta" data-hm="bundle">
     Get Full Bundle
     <span class="nav-cta-price">$97</span>
   </a>
@@ -782,8 +781,7 @@ footer p { max-width: 700px; margin: 6px auto; }
         <li>Brand-name substitutes available at any hardware store</li>
         <li>The best first step for new readers</li>
       </ul>
-      <!-- TODO: replace with your checkout link -->
-      <a href="#" class="cta-btn">Get The Vault →</a>
+      <a href="#" class="cta-btn" data-hm="vol1">Get The Vault →</a>
       <div class="guarantee"><span class="guarantee-icon">✓</span> 7-day money-back guarantee</div>
       <div class="payment-badges">
         <span class="pb-secure">🔒 Secure</span><span class="pb-divider">·</span>
@@ -815,8 +813,7 @@ footer p { max-width: 700px; margin: 6px auto; }
         <li>Engineering &amp; the science behind why it works</li>
         <li>Universal — works anywhere, no special setup</li>
       </ul>
-      <!-- TODO: replace with your checkout link -->
-      <a href="#" class="cta-btn">Get The Blueprint →</a>
+      <a href="#" class="cta-btn" data-hm="vol2">Get The Blueprint →</a>
       <div class="guarantee"><span class="guarantee-icon">✓</span> 7-day money-back guarantee</div>
       <div class="payment-badges">
         <span class="pb-secure">🔒 Secure</span><span class="pb-divider">·</span>
@@ -865,8 +862,7 @@ footer p { max-width: 700px; margin: 6px auto; }
         <li>Original documents &amp; declassified research</li>
         <li>Brand-name substitutes that work anywhere</li>
       </ul>
-      <!-- TODO: replace with your checkout link -->
-      <a href="#" class="cta-btn gold">Get All 3 Volumes →</a>
+      <a href="#" class="cta-btn gold" data-hm="bundle">Get All 3 Volumes →</a>
       <div class="guarantee"><span class="guarantee-icon">✓</span> 7-day money-back guarantee · Instant access</div>
       <div class="payment-badges">
         <span class="pb-secure">🔒 Secure</span><span class="pb-divider">·</span>
@@ -976,15 +972,13 @@ footer p { max-width: 700px; margin: 6px auto; }
     <h3>Not Ready For The Full Bundle?<br>Start Small.</h3>
     <p>You don't need all three volumes today. <strong style="color: var(--gold-bright);">The Vault (Vol I) alone</strong> contains the 22 core formulas — the heart of the archive.</p>
     <div class="modal-savings">Start with Volume I for <strong>$27</strong> · Upgrade anytime</div>
-    <!-- TODO: replace with your Volume I checkout link -->
-    <a href="#" class="modal-cta">Get The Vault — $27</a>
+    <a href="#" class="modal-cta" data-hm="vol1">Get The Vault — $27</a>
     <button class="modal-decline" onclick="closeModal()">No thanks, I'll keep browsing</button>
   </div>
 </div>
 
 <!-- ===== STICKY MOBILE BOTTOM CTA ===== -->
-<!-- TODO: replace href with your bundle checkout link -->
-<a href="#offer" class="mobile-sticky-cta">
+<a href="#offer" class="mobile-sticky-cta" data-hm="bundle">
   <div class="msc-left">
     <span class="msc-label">Complete Vault</span>
     <span class="msc-price-row"><span class="msc-was">$230</span><span class="msc-now">$97</span></span>
@@ -1003,6 +997,27 @@ footer p { max-width: 700px; margin: 6px auto; }
 </div>
 
 <script>
+/* ==========================================
+   HOTMART CHECKOUT LINKS  ←  EDIT HERE
+   Paste each product's "Checkout page" link
+   (the one that starts with https://pay.hotmart.com/...)
+   ========================================== */
+const HOTMART_LINKS = {
+  vol1:   'https://pay.hotmart.com/Q106173047J',   // Volume I — The Vault ($27)
+  vol2:   'https://pay.hotmart.com/P106173065X',   // Volume II — The Blueprint ($47)
+  bundle: 'https://pay.hotmart.com/E106173093A',   // The Complete Vault — Bundle ($97)
+};
+
+/* Apply the links to every CTA tagged with data-hm. Runs first so the
+   clickable-card logic below sees real hrefs. Buttons whose link is still
+   blank are left as-is (they won't navigate until you fill the link in). */
+(function applyHotmartLinks() {
+  document.querySelectorAll('[data-hm]').forEach(el => {
+    const url = HOTMART_LINKS[el.getAttribute('data-hm')];
+    if (url) el.setAttribute('href', url);
+  });
+})();
+
 /* ---- LIVE VIEWER COUNTER (demo) ---- */
 (function liveViewers() {
   const el = document.getElementById('live-viewers');
