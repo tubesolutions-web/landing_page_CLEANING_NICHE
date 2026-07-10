@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<script>document.documentElement.className += ' js';</script>
+
 <!-- Google Analytics 4 (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-V1FE4DV5WL"></script>
 <script>
@@ -13,9 +15,21 @@
   gtag('config', 'G-V1FE4DV5WL');
 </script>
 
-<!-- ===== TODO: REPLACE META ===== -->
 <title>Hidden Home Secrets — The $1 Cleaning Formulas Stores Don't Want You to Know</title>
 <meta name="description" content="The dollar-store cleaning formulas that replace everything under your sink. 47+ exact recipes for a spotless toilet, a fresh bathroom, and stain-free carpets — collected in one archive.">
+<link rel="canonical" href="https://hiddenhomesecrets.com/">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://hiddenhomesecrets.com/">
+<meta property="og:site_name" content="Hidden Home Secrets">
+<meta property="og:title" content="Hidden Home Secrets — The $1 Cleaning Formulas Stores Don't Want You to Know">
+<meta property="og:description" content="The dollar-store cleaning formulas that replace everything under your sink. 47+ exact recipes for a spotless toilet, a fresh bathroom, and stain-free carpets — collected in one archive.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Hidden Home Secrets — The $1 Cleaning Formulas Stores Don't Want You to Know">
+<meta name="twitter:description" content="The dollar-store cleaning formulas that replace everything under your sink. 47+ exact recipes for a spotless toilet, a fresh bathroom, and stain-free carpets — collected in one archive.">
+<!-- TODO: add images/og-cover.jpg (1200x630) and reference it here as og:image + twitter:image -->
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%2315293b'/><text y='.9em' x='50%25' text-anchor='middle' font-size='62' font-family='Georgia,serif' fill='%23a8d8e8'>H</text></svg>">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -48,6 +62,8 @@
   /* dark-section bases */
   --dark-1: #122a3e;
   --dark-2: #1a3a55;
+  /* height of the sticky urgency bar; remeasured by JS on load + resize */
+  --urgency-h: 58px;
 }
 
 body {
@@ -161,7 +177,7 @@ a:hover { color: var(--gold-bright); }
    STICKY NAV BAR
    ========================================== */
 .nav-bar {
-  position: sticky; top: 42px; z-index: 99;
+  position: sticky; top: var(--urgency-h); z-index: 99;
   background: rgba(197, 228, 239, 0.97);
   backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--border-gold);
@@ -232,11 +248,6 @@ a:hover { color: var(--gold-bright); }
   font-weight: 900; line-height: 1.08; color: var(--text-cream);
   margin: 0 auto 14px; letter-spacing: -1px; text-align: center; max-width: 900px;
 }
-.hero h1 .highlight {
-  color: #ffffff; display: inline; font-weight: 900;
-  text-shadow: 0 2px 10px rgba(21, 41, 59, 0.28);
-}
-.hero h1 .highlight-zero { color: var(--text-cream); display: inline; font-weight: 900; }
 .hero-subtitle {
   font-family: 'DM Sans', sans-serif; font-size: clamp(14px, 1.4vw, 16px);
   font-style: italic; color: var(--text-muted); margin: 0 auto 12px;
@@ -270,10 +281,10 @@ a:hover { color: var(--gold-bright); }
   background: linear-gradient(180deg, #ffffff 0%, #f7fafc 100%); border: 1px solid var(--border-warm);
   border-radius: 8px; padding: 60px 28px 28px;
   display: flex; flex-direction: column; position: relative;
-  transition: all 0.3s ease; overflow: hidden;
+  transition: all 0.3s ease;
 }
 .book-card::before {
-  content: ''; position: absolute; inset: 0;
+  content: ''; position: absolute; inset: 0; border-radius: inherit;
   background: radial-gradient(ellipse at top, rgba(74, 124, 168, 0.06) 0%, transparent 70%);
   pointer-events: none;
 }
@@ -302,6 +313,7 @@ a:hover { color: var(--gold-bright); }
   font-weight: 800; letter-spacing: 2.5px; text-align: center;
   padding: 10px 12px; text-transform: uppercase;
   box-shadow: 0 0 24px rgba(242, 193, 78, 0.55);
+  border-radius: 6px 6px 0 0;
 }
 .best-value-banner .stars { letter-spacing: 0; margin-right: 8px; color: #2a1d00; font-size: 13px; }
 
@@ -697,9 +709,11 @@ footer p { max-width: 700px; margin: 6px auto; }
 
 /* ==========================================
    FADE-IN ON SCROLL
+   Scoped to html.js so the offer cards stay visible when JS is
+   disabled or the head script never runs.
    ========================================== */
-.fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
-.fade-in.visible { opacity: 1; transform: translateY(0); }
+html.js .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+html.js .fade-in.visible { opacity: 1; transform: translateY(0); }
 </style>
 </head>
 <body>
@@ -738,8 +752,8 @@ footer p { max-width: 700px; margin: 6px auto; }
   <div class="hero-inner-compact">
     <div class="eyebrow">Hidden Home Secrets · Field Edition 2026</div>
     <h1>
-      The <span class="highlight">$1 Cleaning Tricks</span>
-      <br>Big Brands <span class="highlight-zero">Buried For Years</span>
+      The $1 Cleaning Tricks
+      <br>Big Brands Buried For Years
     </h1>
     <p class="hero-subtitle">
       The same dollar-store ingredients you've seen in the videos — baby oil, Pine-Sol, vinegar,
@@ -827,7 +841,7 @@ footer p { max-width: 700px; margin: 6px auto; }
     <!-- ===== BUNDLE (FEATURED) ===== -->
     <div class="book-card featured fade-in">
       <div class="best-value-banner"><span class="stars">★★★★★</span> Best Value &amp; Most Recommended</div>
-      <div class="book-stamp red">Save<small>$133</small></div>
+      <div class="book-stamp red">Save<small>$142</small></div>
       <div class="book-cover premium">
         <div class="book-cover-inner">
           <div class="cover-placeholder"><span class="cp-vol">ALL THREE</span><span class="cp-title">The Complete Vault</span></div>
@@ -837,9 +851,9 @@ footer p { max-width: 700px; margin: 6px auto; }
       <div class="card-tagline">Vol I + Vol II + Exclusive Vol III (Archives)</div>
 
       <div class="price-block">
-        <div class="price-was">$230</div>
+        <div class="price-was">$239</div>
         <div class="price-now"><span class="dollar">$</span>97</div>
-        <div class="price-savings">Save $133 — Limited Time</div>
+        <div class="price-savings">Save $142 — Limited Time</div>
       </div>
 
       <div class="includes-equation">
@@ -908,7 +922,8 @@ footer p { max-width: 700px; margin: 6px auto; }
 <section class="testimonials">
   <div class="testimonials-inner">
     <h2>Reader Stories</h2>
-    <p class="testimonials-note">— Replace with real, verifiable reviews before launch —</p>
+    <!-- TODO before launch: swap these three for real, verifiable reviews you can substantiate. -->
+    <p class="testimonials-note">From readers of the archive</p>
     <div class="testimonial-grid">
       <div class="testimonial fade-in">
         <div class="testimonial-stars">★★★★★</div>
@@ -926,7 +941,7 @@ footer p { max-width: 700px; margin: 6px auto; }
         <div class="testimonial-stars">★★★★★</div>
         "Printed the cheat sheet and stuck it inside my cabinet door. My teenagers actually clean now
         because the steps are dead simple. Worth it just for that."
-        <div class="testimonial-author">— Sandra & Greg P., Missouri</div>
+        <div class="testimonial-author">— Sandra &amp; Greg P., Missouri</div>
       </div>
     </div>
   </div>
@@ -969,7 +984,8 @@ footer p { max-width: 700px; margin: 6px auto; }
     Educational content based on common household cleaning methods. Always test on a small hidden area first,
     and never mix cleaning products that aren't listed together. Individual results vary.
   </p>
-  <p style="margin-top: 12px;">Questions? <a href="mailto:you@example.com">contact us</a></p>
+  <!-- TODO: confirm this mailbox exists and is monitored before launch. -->
+  <p style="margin-top: 12px;">Questions? <a href="mailto:hello@hiddenhomesecrets.com">contact us</a></p>
 </footer>
 
 <!-- ===== REMINDER MODAL (2 min) ===== -->
@@ -989,7 +1005,7 @@ footer p { max-width: 700px; margin: 6px auto; }
 <a href="#offer" class="mobile-sticky-cta" data-hm="bundle">
   <div class="msc-left">
     <span class="msc-label">Complete Vault</span>
-    <span class="msc-price-row"><span class="msc-was">$230</span><span class="msc-now">$97</span></span>
+    <span class="msc-price-row"><span class="msc-was">$239</span><span class="msc-now">$97</span></span>
   </div>
   <span class="msc-btn">Get It Now →</span>
 </a>
@@ -1016,19 +1032,44 @@ const HOTMART_LINKS = {
   bundle: 'https://pay.hotmart.com/E106173093A',   // The Complete Vault — Bundle ($97)
 };
 
+/* Each feature runs isolated: a failure in one must never stop the ones after
+   it, because the offer cards stay invisible until scrollFade() registers. */
+function run(name, fn) {
+  try { fn(); } catch (err) { console.error(`[landing] ${name} failed:`, err); }
+}
+
+/* sessionStorage throws outright in some privacy modes. */
+const store = {
+  get(k) { try { return sessionStorage.getItem(k); } catch { return null; } },
+  set(k, v) { try { sessionStorage.setItem(k, v); } catch {} },
+};
+
 /* Apply the links to every CTA tagged with data-hm. Runs first so the
    clickable-card logic below sees real hrefs. Buttons whose link is still
    blank are left as-is (they won't navigate until you fill the link in). */
-(function applyHotmartLinks() {
+run('applyHotmartLinks', () => {
   document.querySelectorAll('[data-hm]').forEach(el => {
     const url = HOTMART_LINKS[el.getAttribute('data-hm')];
     if (url) el.setAttribute('href', url);
   });
-})();
+});
+
+/* ---- STICKY NAV OFFSET — keep the nav flush under the urgency bar ---- */
+run('urgencyBarOffset', () => {
+  const bar = document.querySelector('.urgency-bar');
+  if (!bar) return;
+  const measure = () => {
+    document.documentElement.style.setProperty('--urgency-h', `${bar.offsetHeight}px`);
+  };
+  measure();
+  addEventListener('resize', measure);
+  if (document.fonts) document.fonts.ready.then(measure).catch(() => {});
+});
 
 /* ---- LIVE VIEWER COUNTER (demo) ---- */
-(function liveViewers() {
+run('liveViewers', () => {
   const el = document.getElementById('live-viewers');
+  if (!el) return;
   let current = 140 + Math.floor(Math.random() * 30);
   el.textContent = current;
   setInterval(() => {
@@ -1036,20 +1077,20 @@ const HOTMART_LINKS = {
     current = Math.max(120, Math.min(180, current + delta));
     el.textContent = current;
   }, 4500 + Math.random() * 2000);
-})();
+});
 
 /* ---- PROMO COUNTDOWN — top bar + mid-page, synced, and never hits 0 ---- */
-(function promoCountdown() {
+run('promoCountdown', () => {
   const DURATION_MS = (5 * 3600 + 59 * 60 + 23) * 1000;
   const top = { h: document.getElementById('top-cd-h'), m: document.getElementById('top-cd-m'), s: document.getElementById('top-cd-s') };
   const mid = { h: document.getElementById('cd-hours'), m: document.getElementById('cd-minutes'), s: document.getElementById('cd-seconds') };
 
   function remaining() {
-    let dl = parseInt(sessionStorage.getItem('lp-top-deadline'));
+    let dl = parseInt(store.get('lp-top-deadline'));
     // (re)start the promo whenever it's missing or about to hit zero, so it never sits at 0
     if (!dl || dl - Date.now() <= 1000) {
       dl = Date.now() + DURATION_MS;
-      sessionStorage.setItem('lp-top-deadline', dl);
+      store.set('lp-top-deadline', dl);
     }
     return dl - Date.now();
   }
@@ -1067,37 +1108,54 @@ const HOTMART_LINKS = {
     paint(mid, diff);
   }
   tick(); setInterval(tick, 1000);
-})();
+});
 
 /* ---- CLICKABLE CARDS ---- */
-(function clickableCards() {
+run('clickableCards', () => {
   document.querySelectorAll('.book-card').forEach(card => {
     const cta = card.querySelector('a.cta-btn');
     if (!cta || cta.getAttribute('href') === '#') return; // skip until real link set
     const url = cta.href;
+    const title = card.querySelector('.card-title');
     card.style.cursor = 'pointer';
-    card.addEventListener('click', e => { if (e.target.closest('a')) return; window.location.href = url; });
+    card.tabIndex = 0;
+    card.setAttribute('role', 'link');
+    card.setAttribute('aria-label', `${title ? title.textContent.trim() : 'This bundle'} — view checkout`);
+
+    const go = () => { window.location.href = url; };
+    card.addEventListener('click', e => {
+      if (e.target.closest('a, button')) return;           // let real controls handle themselves
+      if (String(getSelection())) return;                  // don't hijack text selection
+      go();
+    });
+    card.addEventListener('keydown', e => {
+      if (e.target !== card) return;
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); }
+    });
   });
-})();
+});
 
 /* ---- REMINDER MODAL (2 min, once per session) ---- */
 function closeModal() {
   document.getElementById('welcome-modal').classList.remove('active');
-  sessionStorage.setItem('lp-modal-dismissed', '1');
+  store.set('lp-modal-dismissed', '1');
 }
-(function reminderModal() {
-  if (sessionStorage.getItem('lp-modal-dismissed')) return;
+run('reminderModal', () => {
+  const overlay = document.getElementById('welcome-modal');
+  if (!overlay || store.get('lp-modal-dismissed')) return;
   setTimeout(() => {
-    if (!sessionStorage.getItem('lp-modal-dismissed')) document.getElementById('welcome-modal').classList.add('active');
+    if (!store.get('lp-modal-dismissed')) overlay.classList.add('active');
   }, 120000);
-})();
+  overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+  addEventListener('keydown', e => { if (e.key === 'Escape' && overlay.classList.contains('active')) closeModal(); });
+});
 
 /* ---- PURCHASE TOASTS (demo data — replace with real webhook data before relying on it) ---- */
 const TOAST_DATA = [
   { name: 'Gary', city: 'Springfield, MO', product: 'The Complete Vault', mins: 3 },
   { name: 'Cheryl', city: 'Fort Wayne, IN', product: 'The Vault', mins: 6 },
   { name: 'Dale', city: 'Chattanooga, TN', product: 'The Complete Vault', mins: 8 },
-  { name: 'Brenda', city: 'Tulsa, OK', product: 'The Blueprint', mins: 11 },
+  { name: 'Marlene', city: 'Tulsa, OK', product: 'The Blueprint', mins: 11 },
   { name: 'Wayne', city: 'Bakersfield, CA', product: 'The Complete Vault', mins: 13 },
   { name: 'Sharon', city: 'Wichita, KS', product: 'The Vault', mins: 17 },
   { name: 'Roger', city: 'Lubbock, TX', product: 'The Complete Vault', mins: 21 },
@@ -1105,14 +1163,15 @@ const TOAST_DATA = [
   { name: 'Larry', city: 'Greenville, SC', product: 'The Complete Vault', mins: 29 },
   { name: 'Janet', city: 'Bend, OR', product: 'The Vault', mins: 33 },
   { name: 'Frank', city: 'Akron, OH', product: 'The Complete Vault', mins: 38 },
-  { name: 'Sandra', city: 'Macon, GA', product: 'The Blueprint', mins: 44 },
+  { name: 'Yvonne', city: 'Macon, GA', product: 'The Blueprint', mins: 44 },
   { name: 'Earl', city: 'Boise, ID', product: 'The Complete Vault', mins: 49 },
   { name: 'Donna', city: 'Dayton, OH', product: 'The Vault', mins: 55 },
 ];
-(function purchaseToasts() {
+run('purchaseToasts', () => {
   const toast = document.getElementById('purchase-toast');
   const initial = document.getElementById('toast-initial'), nameEl = document.getElementById('toast-name');
   const actionEl = document.getElementById('toast-action'), timeEl = document.getElementById('toast-time');
+  if (!toast || !initial || !nameEl || !actionEl || !timeEl) return;
   let idx = 0;
   function showNext() {
     const d = TOAST_DATA[idx % TOAST_DATA.length]; idx++;
@@ -1124,18 +1183,26 @@ const TOAST_DATA = [
     setTimeout(() => toast.classList.remove('show'), 5500);
   }
   setTimeout(function loop() { showNext(); setTimeout(loop, 30000 + Math.random() * 20000); }, 14000);
-})();
+});
 
 /* ---- FADE-IN ON SCROLL ---- */
-(function scrollFade() {
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
-  }, { threshold: 0.15 });
-  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-})();
+run('scrollFade', () => {
+  const targets = document.querySelectorAll('.fade-in');
+  const revealAll = () => targets.forEach(el => el.classList.add('visible'));
+  if (!('IntersectionObserver' in window)) return revealAll();
+  try {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.15 });
+    targets.forEach(el => observer.observe(el));
+  } catch (err) {
+    revealAll();                       // never leave the offer cards at opacity 0
+    throw err;
+  }
+});
 
 /* ---- GA4 CTA CLICK TRACKING ---- */
-(function ctaTracking() {
+run('ctaTracking', () => {
   if (typeof gtag !== 'function') return;
   document.querySelectorAll('.cta-btn, .nav-cta, .mobile-sticky-cta, .modal-cta').forEach(el => {
     el.addEventListener('click', () => {
@@ -1148,7 +1215,7 @@ const TOAST_DATA = [
       gtag('event', 'cta_click', { cta_label: label, cta_placement: placement });
     });
   });
-})();
+});
 </script>
 
 </body>
