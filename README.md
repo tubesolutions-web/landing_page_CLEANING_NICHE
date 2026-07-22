@@ -1,27 +1,24 @@
-# Landing Page
+# Hidden Cleaning Hacks — Landing Page
 
-A single-file, conversion-optimized sales landing page for a 3-volume digital product.
+A single-file, conversion-optimized sales landing page for a single ebook.
 Pure HTML + inline CSS + vanilla JS — no build step, no framework, no dependencies.
-Open `index.html` in a browser, or drop it on any static host (Cloudflare Pages,
-Netlify, Vercel, GitHub Pages).
+Open `index.html` in a browser, or drop it on any static host (currently deployed to
+GitHub Pages via `.github/workflows/static.yml`, on push to `main`).
 
 ## Design system
 
-**Typography — Pairing 01**
-- **Fraunces** (variable display serif) — headings, prices, brand, card titles
-- **DM Sans** — body copy, UI labels, buttons, badges
+**Typography**
+- **Playfair Display** — headings, prices, title, cover
+- **Hanken Grotesk** — body copy, UI labels, buttons
+- **Space Mono** — labels, stats, fine print, the cost-comparison "bill"
 
-**Color roles** — each color does one job, so the eye learns the page instantly:
+**Color roles**
 | Color | Meaning | Where |
 |---|---|---|
-| **Red** | Urgency / time pressure | Top promo bar, "This price expires in" countdown |
-| **Gold** | Value / buy | All CTAs, "Best Value" banner, corner stamps, featured card |
-| **Black** (navy `#15293b`) | The price | The big `$27 / $47 / $97` numbers |
-| **Blue / steel** | Brand & structure | Page background, nav brand, book covers |
-
-The two single cards (Vault, Blueprint) are **white**; the featured "Complete Vault"
-card has a **cream-gold** wash with matching gold bonus + equation panels, so it reads
-as the recommended pick against the cool-blue page.
+| **Cream** (`#f3ead7`) | Page background | Light sections |
+| **Dark** (`#16130f`) | Contrast bands | Alternating dark sections, footer, sticky bars |
+| **Green** (`#3c6d4a` / `#5fae7a`) | Brand accent / value | Eyebrows, prices, cover art, dividers |
+| **Red** (`#b23a28`) | Action | All CTA buttons, urgency bar |
 
 All colors live in the CSS `:root` block at the top of `index.html` — edit there to re-skin.
 
@@ -29,28 +26,36 @@ All colors live in the CSS `:root` block at the top of `index.html` — edit the
 
 | Section | Purpose |
 |---|---|
-| Sticky **urgency bar** | Live-viewer counter + countdown (session-based) |
-| Sticky **nav** | Always-visible bundle CTA + price |
-| Compact **hero** | Short on purpose so pricing cards sit near the fold |
-| 3-card **offer** | Two singles + a scaled-up featured bundle, anchor pricing, `I+II+III` equation, bonus stack |
-| **Story** | Placed *after* the offer to soften price reaction |
-| **Countdown** | Mid-page deadline, synced to the top bar's timer |
-| **Testimonials** | Social proof (replace with real reviews) |
-| **FAQ** | Native `<details>` accordion, kills objections |
-| **Reminder modal** | Fires at 2 min, downsell to the cheapest product |
-| **Purchase toasts** | Rotating "X just bought" social proof |
-| **Mobile sticky CTA** | Always-visible buy bar on phones |
+| Sticky **top bar** | Launch price + evergreen countdown |
+| Sticky **buy bar** | Appears once you scroll past the hero |
+| **Hero** | Headline, CTA, SVG-drawn book cover (no image asset needed) |
+| **Stat ribbon** | Formula count, room count, index, price |
+| **The Math** | Cost-of-doing-it-the-usual-way vs. with the book, receipt-style |
+| **Who Profits** | Why the cheap fix is never the one you hear about |
+| **What's Inside** | The 9 rooms/problem areas + how the A–Z index works |
+| **The Deal** | 5 trust vows — what this book won't do |
+| **Reviews** | Social proof (replace with real reviews before launch) |
+| **Offer** | Single price card, guarantee, payment badges |
+| **FAQ** | Native `<details>` accordion |
+| **Close + Footer** | Final CTA, brand, legal fine print |
 
 ## Customize
 
-1. **Copy & meta** — search `index.html` for `TODO` and the `YOUR BRAND` / `Your Product` placeholders.
-2. **Checkout links** — every CTA `href="#"` needs your real checkout URL (Hotmart, Stripe, Gumroad, etc.).
-3. **Theme** — edit the CSS variables in `:root`.
-4. **Book covers** — replace the `.cover-placeholder` divs with `<img src="images/vol1.jpg">` once you have artwork.
+1. **Checkout link** — set `EBOOK_LINK` near the bottom of `index.html` to your real
+   checkout URL (Hotmart, Stripe, Gumroad, etc.). Until it's set, every CTA points to `#`
+   and won't take visitors anywhere.
+2. **Cover art** — the hero cover is inline SVG (dark green gradient, title, stats). A
+   standalone copy lives at `images/cover.svg` if you want it as a separate asset. Edit
+   the text/colors directly in the SVG markup (appears in both places) to change it.
+3. **Price / title** — search `index.html` for `$36` and `Hidden Cleaning Hacks` to
+   rename or reprice; both appear in several places (hero, buy bars, offer card, FAQ).
+4. **Analytics** — GA4 is wired in (`G-V1FE4DV5WL`), including CTA click tracking by
+   placement (hero / sticky buy bar / offer card / close).
+5. **Domain** — `CNAME` points this repo at `hiddenhomesecrets.com` via GitHub Pages.
 
 ## Honesty note
 
-The live-viewer counter, countdowns, and purchase toasts are **simulated** by default.
-If you show them to real visitors, either wire them to real data or be aware that
-fabricated scarcity/social-proof can be deceptive (and is regulated in many jurisdictions).
-The testimonials are placeholders — replace them with real, verifiable ones before launch.
+The top-bar countdown resets to a fresh ~24h window for every visitor, every day — it's
+a simulated deadline, not a real one. The reviews are placeholders. Replace both with
+real data before relying on them; fabricated scarcity/social proof can be deceptive and
+is regulated in many jurisdictions.
