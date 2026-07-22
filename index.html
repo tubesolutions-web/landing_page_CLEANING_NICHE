@@ -15,19 +15,21 @@
 
 <!-- TODO before this can process real sales: paste your checkout URL into EBOOK_LINK near the bottom of this file. -->
 
-<title>Hidden Cleaning Hacks — $1 Cleaning Formulas, Finally Written Down</title>
+<title>Hidden $1 Cleaning Hacks — $1 Cleaning Formulas, Finally Written Down</title>
 <meta name="description" content="Almost every cleaner under your sink has a $1 replacement. 63 dollar-store cleaning formulas across 9 rooms and problem areas, with an A–Z index — collected in one ebook.">
 <link rel="canonical" href="https://hiddenhomesecrets.com/">
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://hiddenhomesecrets.com/">
-<meta property="og:site_name" content="Hidden Cleaning Hacks">
-<meta property="og:title" content="Hidden Cleaning Hacks — $1 Cleaning Formulas, Finally Written Down">
+<meta property="og:site_name" content="Hidden $1 Cleaning Hacks">
+<meta property="og:title" content="Hidden $1 Cleaning Hacks — $1 Cleaning Formulas, Finally Written Down">
 <meta property="og:description" content="Almost every cleaner under your sink has a $1 replacement. 63 dollar-store cleaning formulas across 9 rooms and problem areas, with an A–Z index — collected in one ebook.">
+<meta property="og:image" content="https://hiddenhomesecrets.com/images/cover.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Hidden Cleaning Hacks — $1 Cleaning Formulas, Finally Written Down">
+<meta name="twitter:title" content="Hidden $1 Cleaning Hacks — $1 Cleaning Formulas, Finally Written Down">
 <meta name="twitter:description" content="Almost every cleaner under your sink has a $1 replacement. 63 dollar-store cleaning formulas across 9 rooms and problem areas, with an A–Z index — collected in one ebook.">
-<!-- TODO: add images/og-cover.jpg (1200x630) and reference it here as og:image + twitter:image -->
+<meta name="twitter:image" content="https://hiddenhomesecrets.com/images/cover.png">
+<!-- TODO: cover.png is portrait (3:4); a proper 1200x630 landscape crop would look better in link previews -->
 
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%2316130f'/><text y='.9em' x='50%25' text-anchor='middle' font-size='62' font-family='Georgia,serif' fill='%235fae7a'>H</text></svg>">
 
@@ -102,15 +104,15 @@
   .hero .price b{color:var(--ink);}
   .hero .from{font-family:var(--mono);font-size:.74rem;letter-spacing:.06em;color:var(--faint);margin:10px 0 0;text-transform:uppercase;}
 
-  /* book object — CSS-drawn cover, no image asset needed */
+  /* book object — cover art is images/cover.png */
   .bookwrap{display:flex;flex-direction:column;align-items:center;justify-content:center;}
   .book3d{position:relative;width:300px;max-width:90%;perspective:1300px;
     filter:drop-shadow(16px 22px 30px rgba(40,24,8,.42));}
-  .cover-img{width:100%;aspect-ratio:2/3;overflow:hidden;border-radius:3px 7px 7px 3px;
+  .cover-img{width:100%;aspect-ratio:3/4;overflow:hidden;border-radius:3px 7px 7px 3px;
     transform:rotateY(-15deg) rotateX(2deg);
     border-left:6px solid rgba(0,0,0,.6);
     outline:1px solid rgba(60,109,74,.42);}
-  .cover-img svg{display:block;width:100%;height:100%;}
+  .cover-img img{display:block;width:100%;height:100%;object-fit:cover;}
   .cover-cap{font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;
     color:var(--faint);margin-top:18px;}
   .pricetag{position:absolute;top:-15px;right:-18px;z-index:3;
@@ -290,8 +292,8 @@
 <body>
 
 <div class="buybar" id="buybar">
-  <span class="buybar__title">Hidden Cleaning Hacks</span>
-  <a class="cta" href="#" data-hm="ebook">Get Hidden Cleaning Hacks · $36</a>
+  <span class="buybar__title">Hidden $1 Cleaning Hacks</span>
+  <a class="cta" href="#" data-hm="ebook">Get Hidden $1 Cleaning Hacks · $36</a>
 </div>
 
 <div class="fold">
@@ -302,11 +304,11 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-copy">
-    <p class="eyebrow">Hidden Cleaning Hacks</p>
+    <p class="eyebrow">Hidden $1 Cleaning Hacks</p>
     <h1>Almost every cleaner under your sink has a <span class="hl">$1 replacement.</span> You were just <span class="rev">never told about it.</span></h1>
     <p class="sub">The sprays you re-buy every two weeks, the "specialty" bottle for every surface, the smell that never really leaves. You look up the mess, you get the exact formula, and you stop overpaying at the store.</p>
     <div class="hero-ctas">
-      <a class="cta" href="#" data-hm="ebook">Get Hidden Cleaning Hacks</a>
+      <a class="cta" href="#" data-hm="ebook">Get Hidden $1 Cleaning Hacks</a>
       <a class="cta cta--ghost" href="#math">See the math</a>
     </div>
     <p class="price"><b>$36</b>, once &middot; instant PDF &middot; 7-day refund</p>
@@ -315,36 +317,7 @@
   <div class="bookwrap">
     <div class="book3d">
       <div class="cover-img">
-        <svg viewBox="0 0 400 600" role="img" aria-label="Hidden Cleaning Hacks — ebook cover">
-          <defs>
-            <linearGradient id="coverBg" x1="15%" y1="0%" x2="85%" y2="100%">
-              <stop offset="0%" stop-color="#2c5136"/>
-              <stop offset="100%" stop-color="#16130f"/>
-            </linearGradient>
-            <filter id="coverGrain">
-              <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch" result="n"/>
-              <feColorMatrix in="n" type="saturate" values="0"/>
-            </filter>
-          </defs>
-          <rect width="400" height="600" fill="url(#coverBg)"/>
-          <rect width="400" height="600" filter="url(#coverGrain)" opacity="0.07"/>
-          <rect x="18" y="18" width="364" height="564" rx="4" fill="none" stroke="rgba(240,230,210,0.32)" stroke-width="1.2"/>
-          <circle cx="200" cy="112" r="30" fill="none" stroke="#5fae7a" stroke-width="1.4"/>
-          <g transform="translate(186,96) scale(1.15)">
-            <path d="M12 2C12 2 3 14 3 21a9 9 0 0018 0C21 14 12 2 12 2Z" fill="#5fae7a"/>
-          </g>
-          <text x="200" y="182" text-anchor="middle" style="font-family:var(--mono);font-size:11px;letter-spacing:4px;fill:#8fbf9c;">FIELD EDITION</text>
-          <line x1="168" y1="198" x2="232" y2="198" stroke="#5fae7a" stroke-width="1"/>
-          <text x="200" y="256" text-anchor="middle" style="font-family:var(--display);font-weight:800;font-size:40px;fill:#f0e6d2;">Hidden</text>
-          <text x="200" y="304" text-anchor="middle" style="font-family:var(--display);font-weight:800;font-size:38px;letter-spacing:-0.5px;fill:#f0e6d2;">Cleaning Hacks</text>
-          <line x1="150" y1="334" x2="188" y2="334" stroke="rgba(240,230,210,0.35)" stroke-width="1"/>
-          <rect x="196" y="330" width="8" height="8" transform="rotate(45 200 334)" fill="#5fae7a"/>
-          <line x1="212" y1="334" x2="250" y2="334" stroke="rgba(240,230,210,0.35)" stroke-width="1"/>
-          <text x="200" y="370" text-anchor="middle" style="font-family:var(--mono);font-size:13px;letter-spacing:1px;fill:#c8bca0;">$1 CLEANING FORMULAS</text>
-          <text x="200" y="390" text-anchor="middle" style="font-family:var(--mono);font-size:13px;letter-spacing:1px;fill:#c8bca0;">FOR EVERY ROOM IN THE HOUSE</text>
-          <line x1="120" y1="548" x2="280" y2="548" stroke="rgba(240,230,210,0.18)" stroke-width="1"/>
-          <text x="200" y="572" text-anchor="middle" style="font-family:var(--mono);font-size:10.5px;letter-spacing:2px;fill:#8fbf9c;">63 FORMULAS &middot; 9 ROOMS &middot; A&ndash;Z INDEX</text>
-        </svg>
+        <img src="images/cover.png" alt="Hidden $1 Cleaning Hacks — ebook cover">
       </div>
       <span class="pricetag"><span class="pricetag__old">$47</span><span class="pricetag__new">$36</span></span>
     </div>
@@ -371,7 +344,7 @@
       <h2>What a year of store-bought cleaners really costs.</h2>
       <p class="math-lead">Here's what an ordinary household spends in a year on the sprays and specialty bottles this book replaces — and what it drops to with $1 ingredients. Every cut has its formula.</p>
       <p class="math-pull">$36. Once. That shelf of bottles refills itself every year. The book doesn't.</p>
-      <a class="cta" href="#" data-hm="ebook">Get Hidden Cleaning Hacks</a>
+      <a class="cta" href="#" data-hm="ebook">Get Hidden $1 Cleaning Hacks</a>
       <p class="math-src">Typical household; yours will differ.</p>
     </div>
     <div class="billwrap">
@@ -477,13 +450,13 @@
 
 <!-- OFFER -->
 <section class="offer" id="buy">
-  <p class="eyebrow">VI &middot; Get Hidden Cleaning Hacks</p>
+  <p class="eyebrow">VI &middot; Get Hidden $1 Cleaning Hacks</p>
   <h2>If it doesn't save you more than it cost, I don't want your money.</h2>
   <p class="lead">Read it for 7 days. If it hasn't paid for itself, or it just isn't for you, ask and I'll refund every cent and you keep the book. Pay once, it's yours for good, on every device. No subscription, nothing more to buy.</p>
   <div class="ocard">
     <p class="anchor">One bottle of specialty stain remover pays for it three times over.</p>
     <p class="price"><span class="amt">$36</span><span class="once">once &middot; yours for good</span></p>
-    <a class="cta" href="#" data-hm="ebook">Get Hidden Cleaning Hacks</a>
+    <a class="cta" href="#" data-hm="ebook">Get Hidden $1 Cleaning Hacks</a>
     <p class="micro">instant PDF &middot; 7-day refund &middot; pay once, keep forever</p>
     <p class="pay">Visa &middot; Mastercard &middot; PayPal &middot; Apple Pay</p>
   </div>
@@ -504,12 +477,12 @@
 <!-- CLOSE -->
 <section class="close">
   <h2>Keep re-buying the sprays, or <span class="hl">look it up.</span></h2>
-  <a class="cta" href="#" data-hm="ebook">Get Hidden Cleaning Hacks &middot; $36</a>
+  <a class="cta" href="#" data-hm="ebook">Get Hidden $1 Cleaning Hacks &middot; $36</a>
 </section>
 
 <!-- FOOTER -->
 <footer class="footer">
-  <p class="brand">Hidden Cleaning Hacks</p>
+  <p class="brand">Hidden $1 Cleaning Hacks</p>
   <nav>
     <a href="#inside">What's in it</a>
     <a href="#inside">The nine rooms</a>
